@@ -48,7 +48,7 @@ def get_all_tweets(screen_name):
 		print("...%s tweets downloaded so far" % len(alltweets))
 	
 	# transform the tweepy tweets into a 2D array that will populate the csv
-	outtweets = [[tweet.id_str, tweet.created_at, tweet.text.encode("utf-8")] for tweet in alltweets]
+	outtweets = [[tweet.id_str, tweet.created_at, tweet.text] for tweet in alltweets]
 	
 	# write the csv
 	with open('%s_tweets.csv' % screen_name, 'w') as f:
@@ -61,5 +61,4 @@ def get_all_tweets(screen_name):
 
 if __name__ == '__main__':
 	# pass in the username of the account you want to download
-	# get_all_tweets("realDonaldTrump")
 	get_all_tweets(sys.argv[1])
